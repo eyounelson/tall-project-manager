@@ -22,4 +22,4 @@ status boards (Pending - default, In Progress and Completed)
 
 ## Implementation Overview
 The Project Manager is built a a separate module with the help of
-(Laravel Modules)[https://laravelmodules.com/]
+[Laravel Modules](https://laravelmodules.com/)
