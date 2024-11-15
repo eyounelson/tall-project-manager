@@ -8,10 +8,10 @@ use Modules\ProjectManager\Livewire\Components\CreateProject;
 use Modules\ProjectManager\Livewire\Components\EditProject;
 use Modules\ProjectManager\Livewire\Pages\ListProjects;
 use Modules\ProjectManager\Models\Project;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
-use function Pest\Laravel\get;
 
 pest()->extend(Tests\TestCase::class)
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class);
@@ -21,27 +21,26 @@ pest()->beforeEach(function () {
 });
 
 test('projects can be listed', function () {
-   $user = User::factory()->create();
+    $user = User::factory()->create();
 
-   $projects = ProjectFactory::new()
-       ->sequence(fn($sequence) => [
-           'status' => match($sequence->index) {
+    $projects = ProjectFactory::new()
+        ->sequence(fn ($sequence) => [
+            'status' => match ($sequence->index) {
                 0 => Status::Pending,
                 1 => Status::In_Progress,
                 2 => Status::Completed,
-           }
-       ])
-       ->count(3)
-       ->create(['user_id' => $this->user->id]);
+            },
+        ])
+        ->count(3)
+        ->create(['user_id' => $this->user->id]);
 
-   actingAs($this->user)->get('/project-manager')
-       ->assertSuccessful()
-       ->assertSee('Create Project')
-       ->assertSee($projects[0]->name)
-       ->assertSee($projects[1]->name)
-       ->assertSee($projects[2]->name);
+    actingAs($this->user)->get('/project-manager')
+        ->assertSuccessful()
+        ->assertSee('Create Project')
+        ->assertSee($projects[0]->name)
+        ->assertSee($projects[1]->name)
+        ->assertSee($projects[2]->name);
 });
-
 
 test('project can be created', function () {
     $data = ProjectFactory::new()->make();
@@ -114,6 +113,6 @@ test('project status can be updated via drag and drop', function () {
 
     assertDatabaseHas(Project::class, [
         'id' => $project->id,
-        'status' => 'Completed'
+        'status' => 'Completed',
     ]);
 });

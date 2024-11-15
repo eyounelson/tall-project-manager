@@ -24,11 +24,10 @@ class ProjectFactory extends Factory
         return [
             'name' => fake()->catchPhrase(),
             'description' => fake()->sentences(asText: true),
-            'status'  =>  Status::Pending,
+            'status' => Status::Pending,
             'priority' => Arr::random(Priority::values()),
-            'start_date' => $startDate = fake()->date(max:'yesterday'),
-            'end_date' =>  Carbon::parse($startDate)->addDays(),
+            'start_date' => $startDate = fake()->date(max: 'yesterday'),
+            'end_date' => Carbon::parse($startDate)->addDays(),
         ];
     }
 }
-

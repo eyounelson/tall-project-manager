@@ -29,7 +29,7 @@ class EditProject extends Component
 
     public function save()
     {
-        if (!$this->project) {
+        if (! $this->project) {
             $this->dispatch(
                 'notification',
                 message: 'An error was encountered.',
