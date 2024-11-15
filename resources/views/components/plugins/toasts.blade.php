@@ -67,12 +67,18 @@
 
                                 <!-- Title & Message -->
                                 <div class="flex flex-col gap-2">
-                                    <h3 x-cloak
+                                    <h3
+                                        role="alert"
+                                        aria-live="assertive"
+                                        x-cloak
                                         x-show="notification.title"
                                         class="text-sm font-semibold text-grey-500"
                                         x-text="notification.title"></h3>
 
-                                    <p x-cloak
+                                    <p
+                                        role="alert"
+                                        aria-live="assertive"
+                                        x-cloak
                                        x-show="notification.message"
                                        class="text-pretty text-sm"
                                        x-text="notification.message"></p>

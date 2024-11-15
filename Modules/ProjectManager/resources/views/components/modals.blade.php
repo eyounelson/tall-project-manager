@@ -1,5 +1,6 @@
 <x-modal name="delete-project" focusable>
-   <div class="p-6">
+    <x-slot name="heading">Delete Project</x-slot>
+   <div class="px-6 pb-6">
        <p class="my-4">
            Are you sure you want to delete <strong class="font-bold" x-text="`${meta.name}?`"></strong> This cannot be revered.
        </p>
@@ -18,5 +19,6 @@
         $wire.$refresh();
         "
     ></template>
+    <x-slot name="heading">Edit Project</x-slot>
     <livewire:projectmanager::components.edit-project />
 </x-modal>

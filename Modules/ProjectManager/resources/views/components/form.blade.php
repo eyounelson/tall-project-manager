@@ -1,7 +1,7 @@
 @props([
     'priorities'
 ])
-<form wire:submit.prevent="save" class="p-6" wire:loading.attr="disabled">
+<form wire:submit.prevent="save" class="px-6 pb-6" wire:loading.attr="disabled">
     @csrf
 
     <x-fields.text-input

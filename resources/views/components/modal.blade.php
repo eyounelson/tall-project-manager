@@ -1,7 +1,7 @@
 @props([
     'name',
     'show' => false,
-    'maxWidth' => '2xl'
+    'maxWidth' => '2xl',
 ])
 
 @php
@@ -74,6 +74,13 @@ $maxWidth = [
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     >
+        <h4 {{
+                $heading->attributes->merge([
+                    'class' => "text-lg md:text-2xl lg:text-3xl font-bold border-b border-gray-300 pb-2 m-4"
+            ]) }}>
+            {{ $heading }}
+        </h4>
+
         {{ $slot }}
     </div>
 </div>

@@ -10,6 +10,7 @@
         Create Project
     </x-primary-button>
     <x-modal name="create-project" focusable>
+        <x-slot name="heading">Create Project</x-slot>
         <x-projectmanager::form :priorities="$priorities" />
     </x-modal>
 </div>
