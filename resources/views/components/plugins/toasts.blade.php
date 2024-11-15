@@ -109,8 +109,8 @@
 
                                 <!-- Title & Message -->
                                 <div class="flex flex-col gap-2">
-                                    <h3 x-cloak x-show="notification.title" class="text-sm font-semibold text-green-500" x-text="notification.title"></h3>
-                                    <p x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
+                                    <h3 role="alert" aria-live="assertive" x-cloak x-show="notification.title" class="text-sm font-semibold text-green-500" x-text="notification.title"></h3>
+                                    <p  role="alert" aria-live="assertive" x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
                                 </div>
 
                                 <!--Dismiss Button -->
@@ -135,8 +135,8 @@
 
                                 <!-- Title & Message -->
                                 <div class="flex flex-col gap-2">
-                                    <h3 x-cloak x-show="notification.title" class="text-sm font-semibold text-amber-500" x-text="notification.title"></h3>
-                                    <p x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
+                                    <h3  role="alert" aria-live="assertive" x-cloak x-show="notification.title" class="text-sm font-semibold text-amber-500" x-text="notification.title"></h3>
+                                    <p  role="alert" aria-live="assertive" x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
                                 </div>
 
                                 <!--Dismiss Button -->
@@ -161,8 +161,8 @@
 
                                 <!-- Title & Message -->
                                 <div class="flex flex-col gap-2">
-                                    <h3 x-cloak x-show="notification.title" class="text-sm font-semibold text-red-500" x-text="notification.title"></h3>
-                                    <p x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
+                                    <h3  role="alert" aria-live="assertive" x-cloak x-show="notification.title" class="text-sm font-semibold text-red-500" x-text="notification.title"></h3>
+                                    <p  role="alert" aria-live="assertive" x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
                                 </div>
 
                                 <!--Dismiss Button -->
