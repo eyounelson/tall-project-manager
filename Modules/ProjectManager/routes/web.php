@@ -14,6 +14,6 @@ use Modules\ProjectManager\Livewire\Pages\ListProjects;
 |
 */
 
-Route::group([], function () {
+Route::middleware('auth')->group(function () {
     Route::get('project-manager', ListProjects::class);
 });

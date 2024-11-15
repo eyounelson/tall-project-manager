@@ -37,7 +37,7 @@
                         <span>{{ Str::limit($project->description) }}</span>
                     </template>
                     <template x-if="expanded">
-                        <div>{{ nl2br($project->description) }}</div>
+                        <div>{!! nl2br(e($project->description)) !!}</div>
                     </template>
                 </p>
 

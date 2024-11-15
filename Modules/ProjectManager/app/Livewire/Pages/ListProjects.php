@@ -23,7 +23,7 @@ class ListProjects extends Component
     {
         $pendingProjects = $this->projectQuery()->pending()->simplePaginate(pageName: 'pending_page');
         $inProgressProjects = $this->projectQuery()->inProgress()->simplePaginate(pageName: 'progress_page');
-        $completedProjects = $this->projectQuery()->simplePaginate(pageName: 'completed_page');
+        $completedProjects = $this->projectQuery()->completed()->simplePaginate(pageName: 'completed_page');
 
         return view('projectmanager::livewire.pages.list-projects', [
             'priorities' => Priority::options(),
@@ -33,7 +33,7 @@ class ListProjects extends Component
         ]);
     }
 
-    public function deleteProject(Project $project)
+    public function deleteProject(Project $project): void
     {
         if ($project->user_id !== auth()->id()) {
             $this->dispatch(
@@ -54,7 +54,7 @@ class ListProjects extends Component
         );
     }
 
-    public function updateProjectStatus(Project $project, $status)
+    public function updateProjectStatus(Project $project, $status): void
     {
         if ($project->user_id !== auth()->id()) {
             $this->dispatch(

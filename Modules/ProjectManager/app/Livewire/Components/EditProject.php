@@ -29,6 +29,16 @@ class EditProject extends Component
 
     public function save()
     {
+        if (!$this->project) {
+            $this->dispatch(
+                'notification',
+                message: 'An error was encountered.',
+                variant: 'danger'
+            );
+
+            return;
+        }
+
         ProjectForm::$project = $this->project;
 
         $this->project->update($this->form->validate());
