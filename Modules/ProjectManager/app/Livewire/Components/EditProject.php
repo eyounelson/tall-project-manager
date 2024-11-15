@@ -39,6 +39,16 @@ class EditProject extends Component
             return;
         }
 
+        if (!auth()->user()->can('update', $this->project)) {
+            $this->dispatch(
+                'notification',
+                message: 'You do not have the permission to update this project!',
+                variant: 'warning'
+            );
+
+            return;
+        }
+
         ProjectForm::$project = $this->project;
 
         $this->project->update($this->form->validate());

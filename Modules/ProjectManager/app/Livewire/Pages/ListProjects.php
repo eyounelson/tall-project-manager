@@ -3,6 +3,7 @@
 namespace Modules\ProjectManager\Livewire\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
@@ -35,10 +36,10 @@ class ListProjects extends Component
 
     public function deleteProject(Project $project): void
     {
-        if ($project->user_id !== auth()->id()) {
+        if (!auth()->user()->can('delete', $project)) {
             $this->dispatch(
                 'notification',
-                message: 'You don not have the permission to delete this project!',
+                message: 'You do not have the permission to delete this project!',
                 variant: 'warning'
             );
 
@@ -56,10 +57,10 @@ class ListProjects extends Component
 
     public function updateProjectStatus(Project $project, $status): void
     {
-        if ($project->user_id !== auth()->id()) {
+        if (!auth()->user()->can('update', $project)) {
             $this->dispatch(
                 'notification',
-                message: 'You don not have the permission to update this project!',
+                message: 'You do not have the permission to update this project!',
                 variant: 'warning'
             );
 

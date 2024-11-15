@@ -3,7 +3,10 @@
 namespace Modules\ProjectManager\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\ProjectManager\Models\Project;
+use Modules\ProjectManager\Policies\ProjectPolicy;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class ProjectManagerServiceProvider extends ServiceProvider
@@ -25,6 +28,7 @@ class ProjectManagerServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->loadPolicies();
     }
 
     /**
@@ -114,5 +118,10 @@ class ProjectManagerServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    private function loadPolicies(): void
+    {
+        Gate::policy(Project::class, ProjectPolicy::class);
     }
 }

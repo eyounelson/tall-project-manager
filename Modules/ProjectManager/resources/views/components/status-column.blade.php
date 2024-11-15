@@ -53,16 +53,20 @@
                 </div>
 
                 <div class="flex justify-start items-center mt-4 pt-4 border-t border-gray-200">
-                    <button
-                        @click="$dispatch('open-modal', {name: 'edit-project', meta:{{ Js::encode($project->only('id')) }} }); "
-                        class="text-blue-500 hover:underline mr-2" title="Edit">
-                        <x-heroicon-s-pencil-square class="h-4"/>
-                    </button>
-                    <button
-                            @click="$dispatch('open-modal', {name: 'delete-project', meta:{{ Js::encode($project->only('id', 'name')) }} })"
-                            class="text-red-500 hover:underline ml-2" title="Delete">
-                        <x-heroicon-s-archive-box-x-mark class="h-4"/>
-                    </button>
+                    @can('update', $project)
+                        <button
+                            @click="$dispatch('open-modal', {name: 'edit-project', meta:{{ Js::encode($project->only('id')) }} }); "
+                            class="text-blue-500 hover:underline mr-2" title="Edit">
+                            <x-heroicon-s-pencil-square class="h-4"/>
+                        </button>
+                    @endcan
+                    @can('delete', $project)
+                        <button
+                                @click="$dispatch('open-modal', {name: 'delete-project', meta:{{ Js::encode($project->only('id', 'name')) }} })"
+                                class="text-red-500 hover:underline ml-2" title="Delete">
+                            <x-heroicon-s-archive-box-x-mark class="h-4"/>
+                        </button>
+                    @endcan
                 </div>
 
             </div>
